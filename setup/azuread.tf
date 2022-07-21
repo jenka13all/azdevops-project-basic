@@ -10,8 +10,9 @@
 
 
 provider "azuread" {
-  features {}
+  tenant_id = "3c4312f0-171a-4402-b6f8-d8c47989d416"
 }
+
 resource "azuread_application" "service_connection" {
   display_name               = local.azad_service_connection_sp_name
 }
