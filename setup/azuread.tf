@@ -8,6 +8,10 @@
 
 # Create SP for service connection in pipeline. Will be used to access KV.
 
+
+provider "azuread" {
+  features {}
+}
 resource "azuread_application" "service_connection" {
   display_name               = local.azad_service_connection_sp_name
 }
