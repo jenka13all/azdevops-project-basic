@@ -16,9 +16,9 @@ resource "azuread_service_principal" "service_connection" {
   application_id               = azuread_application.service_connection.application_id
 }
 
-#resource "azuread_service_principal_password" "service_connection" {
-#  service_principal_id = azuread_service_principal.service_connection.object_id
-#}
+resource "azuread_service_principal_password" "service_connection" {
+  service_principal_id = azuread_service_principal.service_connection.object_id
+}
 
 # Create SP for creation of Azure resources in selected subscription.
 # These credentials will be written to the Key Vault and retrieved during pipeline run
@@ -31,9 +31,9 @@ resource "azuread_service_principal" "resource_creation" {
   application_id               = azuread_application.resource_creation.application_id
 }
 
-#resource "azuread_service_principal_password" "resource_creation" {
-#  service_principal_id = azuread_service_principal.resource_creation.object_id
-#}
+resource "azuread_service_principal_password" "resource_creation" {
+  service_principal_id = azuread_service_principal.resource_creation.object_id
+}
 
 resource "azurerm_role_assignment" "resource_creation" {
   scope = data.azurerm_subscription.current.id
