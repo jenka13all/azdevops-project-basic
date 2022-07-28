@@ -15,7 +15,7 @@ resource "azuredevops_project" "project" {
   features = {
     # Only enable pipelines for now
     "testplans"    = "disabled"
-    "artifacts"    = "disabled"
+    "artifacts"    = "enabled"
     "boards"       = "disabled"
     "repositories" = "enabled"
     "pipelines"    = "enabled"
