@@ -17,7 +17,7 @@ resource "azuredevops_project" "project" {
     "testplans"    = "disabled"
     "artifacts"    = "disabled"
     "boards"       = "disabled"
-    "repositories" = "disabled"
+    "repositories" = "enabled"
     "pipelines"    = "enabled"
   }
 }
