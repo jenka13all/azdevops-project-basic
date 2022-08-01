@@ -61,7 +61,7 @@ resource "azuredevops_variable_group" "variablegroup" {
 
   variable {
     name  = "pr_pipeline_id"
-    value = azuredevops_build_definition.pipelines["pr"].id
+    value = azuredevops_build_definition.pipeline_1.id
   }
 
   variable {
