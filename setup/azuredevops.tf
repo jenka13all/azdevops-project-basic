@@ -15,7 +15,7 @@ resource "azuredevops_project" "project" {
   features = {
     # Only enable pipelines for now
     "testplans"    = "disabled"
-    "artifacts"    = "disabled"
+    "artifacts"    = "enabled"
     "boards"       = "disabled"
     "repositories" = "enabled"
     "pipelines"    = "enabled"
@@ -55,10 +55,19 @@ resource "azuredevops_variable_group" "variablegroup" {
   }
 
   variable {
+    name  = "project_id"
+    value = azuredevops_project.project.id
+  }
+
+  variable {
+    name  = "pr_pipeline_id"
+    value = azuredevops_build_definition.pipelines["pr"].id
+  }
+
+  variable {
     name  = "terraform_version"
     value = var.ado_terraform_version
   }
-
 }
 
 resource "azuredevops_build_definition" "pipeline_1" {
