@@ -6,7 +6,7 @@ variable "ado_org_service_url" {
 variable "ado_github_repo" {
   type        = string
   description = "Name of the repository in the format <GitHub Org>/<RepoName>"
-  default     = "jenka13all/azdevops-project-basic"
+  default     = "<your github repo stub>"
 }
 
 variable "ado_pipeline_yaml_path_1" {
@@ -30,18 +30,18 @@ variable "ado_terraform_version" {
 variable "prefix" {
   type        = string
   description = "Naming prefix for resources"
-  default     = "itzb"
+  default     = "<your project name>"
 }
 
 variable "env" {
   type = string
   description = "Environment"
-  default = "platform" #or dev
+  default = "prod" # or dev, staging, etc.
 }
 
 variable "az_location" {
   type    = string
-  default = "germanywestcentral"
+  default = "northeurope"
 }
 
 variable "az_container_name" {
@@ -56,11 +56,6 @@ variable "az_state_key" {
   default     = "terraform.tfstate"
 }
 
-resource "random_integer" "suffix" {
-  min = 10000
-  max = 99999
-}
-
 locals {
   ado_project_name        = "${var.prefix}-${var.env}-project"
   ado_project_description = "Project for ${var.prefix}"
@@ -69,9 +64,9 @@ locals {
 
   az_resource_group_name  = "rg-${var.prefix}-${var.env}"
   az_storage_account_name = "${lower(var.prefix)}${var.env}"
-  az_key_vault_name = "valut-${var.prefix}-${var.env}"
+  az_key_vault_name = "kv-${var.prefix}-${var.env}"
 
-  az_root_mg_id = "<your root management group id>"
+  az_root_mg_id = "<your root management-group id>"
 
   pipeline_variables = {
     storageaccount = azurerm_storage_account.sa.name

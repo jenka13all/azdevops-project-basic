@@ -1,7 +1,7 @@
 # Azure DevOps pipeline for Azure deployment
 
 variables:
-- group: ado-pipeline
+- group: <variable group name>
 
 # when there's a change in the "tenant" folder pushed/merged into main branch
 trigger:
@@ -219,9 +219,3 @@ stages:
         command: 'apply'
         workingDirectory: '$(System.DefaultWorkingDirectory)/tenant'
         commandOptions: '-auto-approve'
-
-
-
-
-
-
